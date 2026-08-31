@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ciber Quest — Painel Admin</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%99%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <section id="tela-negado" class="tela ativa">
+    <div class="hero">
+      <div class="logo-grande">🔒</div>
+      <h1>Acesso restrito</h1>
+      <p class="subtitulo" id="mensagem-negado">Verificando permissões...</p>
+      <div class="rodape-inicio">
+        <a href="/" class="link-secundario">← Voltar ao jogo</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="painel-admin" class="tela">
+    <header class="cabecalho-jogo">
+      <div class="info-jogador">
+        <span class="avatar">⚙️</span>
+        <div>
+          <div class="nome-jogador-topo">Painel Administrativo</div>
+          <div class="nivel-jogador" id="admin-nome">—</div>
+        </div>
+      </div>
+      <nav class="menu-topo">
+        <button data-tab="dashboard" class="botao-nav ativa">📊 Dashboard</button>
+        <button data-tab="usuarios" class="botao-nav">👥 Usuários</button>
+      </nav>
+      <div class="topo-direita">
+        <a href="/" class="botao-secundario pequeno">← Jogo</a>
+        <button id="btn-logout-admin" class="botao-secundario pequeno">Sair</button>
+      </div>
+    </header>
+
+    <main class="container-admin">
+      <section id="tab-dashboard" class="tab ativa">
+        <h2>Estatísticas gerais</h2>
+        <div id="stats-cards" class="grid-stats"></div>
+
+        <div class="painel-secao">
+          <div class="painel-cabecalho">
+            <h3>Desempenho por missão</h3>
+            <div>
+              <a id="btn-relatorio-csv" class="botao-secundario" href="#" download>⬇️ Baixar CSV completo</a>
+            </div>
+          </div>
+          <table class="tabela-admin">
+            <thead>
+              <tr><th>Missão</th><th>Partidas</th><th>Taxa média de acerto</th><th>XP médio</th></tr>
+            </thead>
+            <tbody id="tabela-missoes-stats"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="tab-usuarios" class="tab">
+        <div class="painel-cabecalho">
+          <h2>Usuários</h2>
+          <div>
+            <input type="search" id="filtro-usuarios" placeholder="🔎 Buscar por nome ou e-mail..." class="input-busca" />
+            <button id="btn-novo-usuario" class="botao-principal pequeno">+ Novo usuário</button>
+          </div>
+        </div>
+
+        <table class="tabela-admin">
+          <thead>
+            <tr>
+              <th>ID</th><th>Nome</th><th>E-mail</th><th>Papel</th><th>Status</th>
+              <th>XP</th><th>Missões</th><th>Medalhas</th>
+              <th>Criado</th><th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-usuarios"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL — criar/editar usuário -->
+  <div id="modal-usuario" class="modal-overlay oculto">
+    <div class="modal">
+      <div class="modal-cabecalho">
+        <h3 id="modal-titulo">Novo usuário</h3>
+        <button class="modal-fechar" data-fechar-modal>×</button>
+      </div>
+      <form id="form-usuario" class="formulario">
+        <input type="hidden" id="usuario-id" />
+
+        <div class="campo">
+          <label for="usuario-nome">Nome</label>
+          <input type="text" id="usuario-nome" required minlength="2" maxlength="60" />
+        </div>
+        <div class="campo">
+          <label for="usuario-email">E-mail</label>
+          <input type="email" id="usuario-email" required />
+        </div>
+        <div class="campo">
+          <label for="usuario-senha">Senha <span id="senha-hint" class="hint">(mín 6)</span></label>
+          <input type="password" id="usuario-senha" minlength="6" />
+        </div>
+        <div class="campo">
+          <label for="usuario-papel">Papel</label>
+          <select id="usuario-papel">
+            <option value="usuario">Usuário</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+        <div class="campo campo-checkbox">
+          <label>
+            <input type="checkbox" id="usuario-ativo" checked />
+            Ativo
+          </label>
+        </div>
+
+        <div id="erro-usuario" class="mensagem-erro"></div>
+
+        <div class="modal-acoes">
+          <button type="button" class="botao-secundario" data-fechar-modal>Cancelar</button>
+          <button type="submit" class="botao-principal">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal-historico" class="modal-overlay oculto">
+    <div class="modal modal-largo">
+      <div class="modal-cabecalho">
+        <h3 id="hist-titulo">Histórico</h3>
+        <button class="modal-fechar" data-fechar-modal>×</button>
+      </div>
+      <div id="hist-conteudo"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/questions.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
