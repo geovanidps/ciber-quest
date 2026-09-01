@@ -46,7 +46,7 @@ Saída esperada na primeira vez:
  ADMIN INICIAL CRIADO 
 ============================================================
   E-mail: admin@ciberquest.local
-  Senha:  xxxxxx
+  Senha:  admin123
   Troque a senha em /admin depois do primeiro login.
 ============================================================
 
