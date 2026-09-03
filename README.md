@@ -45,8 +45,9 @@ Saída esperada na primeira vez:
 ============================================================
  ADMIN INICIAL CRIADO 
 ============================================================
-  E-mail: admin@ciberquest.local
-  Senha:  admin123
+  Exemplo:
+  E-mail: admin11@ciberquest.local
+  Senha:  user@123123
   Troque a senha em /admin depois do primeiro login.
 ============================================================
 
@@ -61,7 +62,7 @@ Ciber Quest rodando em http://0.0.0.0:5000
 - **Jogadores**: `http://localhost:5000/`
 - **Admin**: `http://localhost:5000/admin`
 
-Login inicial: `admin@ciberquest.local` / `admin123` — troque no painel.
+Login inicial: `admin11@ciberquest.local` / `user@123123` — troque no painel.
 
 ### Compartilhar com a rede local (opcional)
 
